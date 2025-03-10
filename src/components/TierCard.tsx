@@ -16,7 +16,7 @@ type TierCardProps = {
 
 export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEditing }) => {
     return (
-        <div className="max-w-sm flex flex-col justify-between p-6 bg-white border border-slate-100 rounded-lg shadow">
+        <div className="max-w-sm flex flex-col justify-between p-6 bg-white border border-slate-100 rounded-lg shadow hover:shadow-lg hover:transform hover:scale-105 transition duration-300">
             <div>
                 <div className="flex flex-row justify-between items-center">
                     <p className="text-2xl font-semibold">{tier.name}</p>

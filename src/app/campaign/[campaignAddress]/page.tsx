@@ -4,9 +4,8 @@ import { TierCard } from "@/components/TierCard";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { getContract, prepareContractCall, ThirdwebContract } from "thirdweb";
-import {  sepolia } from "thirdweb/chains";
+import { sepolia } from "thirdweb/chains";
 import { lightTheme, TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
-
 
 export default function CampaignPage() {
     const account = useActiveAccount();
@@ -43,11 +42,9 @@ export default function CampaignPage() {
     });
     // Convert deadline to a date
     const deadlineDate = new Date(parseInt(deadline?.toString() as string) * 1000);
-    // Check if deadline has passed
-    const hasDeadlinePassed = deadlineDate < new Date();
 
     // Goal amount of the campaign
-    const { data: goal, isLoading: isLoadingGoal } = useReadContract({
+    const { data: goal } = useReadContract({
         contract: contract,
         method: "function goal() view returns (uint256)",
         params: [],
@@ -78,7 +75,7 @@ export default function CampaignPage() {
     });
 
     // Get owner of the campaign
-    const { data: owner, isLoading: isLoadingOwner } = useReadContract({
+    const { data: owner } = useReadContract({
         contract: contract,
         method: "function owner() view returns (address)",
         params: [],
@@ -114,12 +111,12 @@ export default function CampaignPage() {
                     </div>
                 )}
             </div>
-            <div className="my-4">
-                <p className="text-lg font-semibold">Description:</p>
+            <div className="my-4 p-4 bg-gray-100 rounded-md hover:bg-emerald-200 transition duration-300">
+                <p className="text-lg font-semibold">📄 Description:</p>
                 <p>{description}</p>
             </div>
-            <div className="mb-4">
-                <p className="text-lg font-semibold">Deadline</p>
+            <div className="mb-4 p-4 bg-gray-100 rounded-md hover:bg-red-100 transition duration-300">
+                <p className="text-lg font-semibold">⏰ Deadline:</p>
                 {!isLoadingDeadline && (
                     <p>{deadlineDate.toDateString()}</p>
                 )}
@@ -136,13 +133,12 @@ export default function CampaignPage() {
                         </p>
                     </div>
                 </div>
-                
             )}
             <div>
-                <p className="text-lg font-semibold">Tiers:</p>
+                <p className="text-lg font-semibold mt-6 mb-2">Tiers:</p>
                 <div className="grid grid-cols-3 gap-4">
                     {isLoadingTiers ? (
-                        <p >Loading...</p>
+                        <p>Loading...</p>
                     ) : (
                         tiers && tiers.length > 0 ? (
                             tiers.map((tier, index) => (
@@ -153,7 +149,7 @@ export default function CampaignPage() {
                                     contract={contract}
                                     isEditing={isEditing}
                                 />
-                            ))
+                            ))  
                         ) : (
                             !isEditing && (
                                 <p>No tiers available</p>
@@ -163,13 +159,12 @@ export default function CampaignPage() {
                     {isEditing && (
                         // Add a button card with text centered in the middle
                         <button
-                            className="max-w-sm flex flex-col text-center justify-center items-center font-semibold p-6 bg-blue-500 text-white border border-slate-100 rounded-lg shadow"
+                            className="max-w-sm flex flex-col text-center justify-center items-center font-semibold p-6 bg-blue-500 text-white border border-slate-100 rounded-lg shadow campaign-card"
                             onClick={() => setIsModalOpen(true)}
                         >+ Add Tier</button>
                     )}
                 </div>
             </div>
-            
             {isModalOpen && (
                 <CreateCampaignModal
                     setIsModalOpen={setIsModalOpen}

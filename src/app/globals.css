@@ -20,3 +20,19 @@
 		@apply bg-zinc-950 text-neutral-200;
 	}
 }
+
+/* Description and Deadline box styling */
+.description-deadline-box {
+    padding: 1rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Hover effect for TierCard and CampaignCard */
+.tier-card:hover, .campaign-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

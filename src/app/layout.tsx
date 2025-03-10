@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
 import Navbar from "@/components/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "CrowdFunding App",
@@ -22,7 +21,7 @@ export default function RootLayout({
       <body className="bg-slate-100 text-slate-700">
         <ThirdwebProvider>
           <Navbar />
-          {children}
+          {children} {/* Add Footer component here */}
         </ThirdwebProvider>
       </body>
     </html>

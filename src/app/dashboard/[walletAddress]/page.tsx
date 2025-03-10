@@ -36,7 +36,7 @@ export default function DashboardPage() {
                     onClick={() => setIsModalOpen(true)}
                 >Create Campaign</button>
             </div>
-            <p className="text-2xl font-semibold mb-4">My Campaigns:</p>
+            <p className="text-2xl font-semibold mb-4">My campagins</p>
             <div className="grid grid-cols-3 gap-4">
                 {!isLoadingMyCampaigns && (
                     myCampaigns && myCampaigns.length > 0 ? (

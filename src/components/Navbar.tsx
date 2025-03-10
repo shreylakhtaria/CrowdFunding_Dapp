@@ -38,16 +38,12 @@ const Navbar = () => {
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
-                                <Link
-                                    href={'/'}
-                                >
-                                    <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700">Campaign     </p>
+                                <Link href={'/'}>
+                                    <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-200 hover:text-gray-900 transition duration-300">Campaign</p>
                                 </Link>
                                 {account && (
-                                    <Link
-                                        href={`/dashboard/${account?.address}`}
-                                    >
-                                        <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700">Dashboard</p>
+                                    <Link href={`/dashboard/${account?.address}`}>
+                                        <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-gray-200 hover:text-gray-900 transition duration-300">Dashboard</p>
                                     </Link>
                                 )}
                             </div>
