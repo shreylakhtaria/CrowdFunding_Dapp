@@ -35,7 +35,7 @@ export default function Home() {
                 />
               ))
             ) : (
-              <p>No Campaigns</p>
+              <p>No Campaigns Are been created. </p>
             )
           )}
         </div>
