@@ -37,7 +37,7 @@ export default function Home() {
             ) : (
               <p>No Campaigns Are been created. </p>
             )
-          )}
+          )} getAllCampaignsg
         </div>
       </div>
     </main>
