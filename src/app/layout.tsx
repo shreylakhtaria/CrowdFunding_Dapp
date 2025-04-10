@@ -4,12 +4,21 @@ import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CrowdFunding App",
-  description:
-    "This is CrowdFunding App",
+  title: "CrowdFunding DApp",
+  description: "Empowering dreams through decentralized crowdfunding on the blockchain.",
+  icons: {
+    icon: [
+      {
+        url: "/logo.svg",
+        type: "image/svg+xml",
+      }
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -18,13 +27,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-slate-100 text-slate-700">
-        <ThirdwebProvider>
-          <Navbar />
-          {children}
-          <Footer /> 
-        </ThirdwebProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 min-h-screen`}>
+        <ThemeProvider>
+          <ThirdwebProvider>
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow pt-16">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ThirdwebProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
